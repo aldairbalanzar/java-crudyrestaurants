@@ -1,6 +1,8 @@
 package com.lambdaschool.crudyrestaurants.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The entity allowing interaction with the restaurants table.
@@ -48,6 +50,9 @@ public class Restaurant
      * This was added to specifically show how to update fields that do not have a NULL value.
      */
     private int seatcapacity;
+
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Menu> menus = new ArrayList<>();
 
     /**
      * Default constructor used primarily by the JPA.
